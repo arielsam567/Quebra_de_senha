@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class main{
+public class Main{
 
     static final ArrayList<String> c = new ArrayList<String>();
     public static void main(String[] args) throws IOException {
