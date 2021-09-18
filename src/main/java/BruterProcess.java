@@ -63,62 +63,20 @@ public class BruterProcess {
     }
 
     public void run() {
-      // long tinicial = System.currentTimeMillis();
-      String password;
-      int charsSize = BruterSupervisor.CHARS_LIST.size();
-      // int qtd = 0;
-      int charIndex1 = 0;
-      int charIndex2 = 0;
-      int charIndex3 = 0;
-      int charIndex4 = 0;
-      int charIndex5 = 0;
-      for (String char0 : chars) {
-        password = char0;
-        checkPassword(password);
-        while (charIndex1 < charsSize) {
-          password = char0 + BruterSupervisor.CHARS_LIST.get(charIndex1);
-          checkPassword(password);
-          while (charIndex2 < charsSize) {
-            password = char0 + BruterSupervisor.CHARS_LIST.get(charIndex1)
-                + BruterSupervisor.CHARS_LIST.get(charIndex2);
-            checkPassword(password);
-            while (charIndex3 < charsSize) {
-              password = char0 + BruterSupervisor.CHARS_LIST.get(charIndex1)
-                  + BruterSupervisor.CHARS_LIST.get(charIndex2) + BruterSupervisor.CHARS_LIST.get(charIndex3);
-              checkPassword(password);
-              while (charIndex4 < charsSize) {
-                password = char0
-                    + BruterSupervisor.CHARS_LIST.get(charIndex1) + BruterSupervisor.CHARS_LIST.get(charIndex2)
-                    + BruterSupervisor.CHARS_LIST.get(charIndex3) + BruterSupervisor.CHARS_LIST.get(charIndex4);
-                checkPassword(password);
-                while (charIndex5 < charsSize) {
-                  password = char0
-                      + BruterSupervisor.CHARS_LIST.get(charIndex1) + BruterSupervisor.CHARS_LIST.get(charIndex2)
-                      + BruterSupervisor.CHARS_LIST.get(charIndex3) + BruterSupervisor.CHARS_LIST.get(charIndex4)
-                      + BruterSupervisor.CHARS_LIST.get(charIndex5);
+      for (String char0 : Collections.shuffle(chars)) {
+        for (String char1 : Collections.shuffle(BruterSupervisor.CHARS_LIST)) {
+          for (String char2 : Collections.shuffle(BruterSupervisor.CHARS_LIST)) {
+            for (String char3 : Collections.shuffle(BruterSupervisor.CHARS_LIST)) {
+              for (String char4 : Collections.shuffle(BruterSupervisor.CHARS_LIST)) {
+                for (String char5 : Collections.shuffle(BruterSupervisor.CHARS_LIST)) {
+                  String password = char0 + char1 + char2 + char3 + char4 + char5;
                   checkPassword(password);
-                  charIndex5++;
-                }
-                ;
-                charIndex5 = 0;
-                charIndex4++;
-              }
-              ;
-              charIndex4 = 0;
-              charIndex3++;
-            }
-            ;
-            charIndex3 = 0;
-            charIndex2++;
-          }
-          ;
-          charIndex2 = 0;
-          charIndex1++;
-        }
-        ;
-        charIndex1 = 0;
-      }
-      ;
+                };
+              };
+            };
+          };
+        };
+      };
     }
 
     private void checkPassword(String password) {

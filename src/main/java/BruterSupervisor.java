@@ -46,13 +46,13 @@ public class BruterSupervisor {
     ;
 
     Runtime r = Runtime.getRuntime();
-    System.out.println("Total of Cores: " + r.availableProcessors());
+    System.out.println("Total of Processors: " + r.availableProcessors());
     System.out.println("Total memory: " + r.totalMemory());
     System.out.println("Free memory: " + r.freeMemory());
     System.out.println("Memory occupied: " + (r.totalMemory() - r.freeMemory()));
 
-    if (r.availableProcessors() < numProcesses) {
-      System.out.println("WARNING! Number of processes is greater than number of processors");
+    if (r.availableProcessors() < (numProcesses * numThreads)) {
+      System.out.println("WARNING! Number of processes + thread is greater than number of processors");
       System.exit(1);
     }
 
