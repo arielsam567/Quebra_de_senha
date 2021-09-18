@@ -3,12 +3,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import com.google.common.collect.Lists;
 
@@ -130,7 +126,7 @@ public class BruterSupervisor {
     System.exit(exitStatus);
   }
 
-  private static String getJavaExecutablePath() {
+  public static String getJavaExecutablePath() {
     String javaHome = System.getProperty("java.home");
     File f = new File(javaHome);
     f = new File(f, "bin");

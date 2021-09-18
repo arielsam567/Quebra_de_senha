@@ -1,9 +1,6 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
 import com.google.common.collect.Lists;
-
 
 public class BruterProcess {
   private static ArrayList<BruteForceThread> threads = new ArrayList<BruteForceThread>();
@@ -72,12 +69,18 @@ public class BruterProcess {
                 for (String char5 : BruterSupervisor.CHARS_LIST) {
                   String password = char0 + char1 + char2 + char3 + char4 + char5;
                   checkPassword(password);
-                };
-              };
-            };
-          };
-        };
-      };
+                }
+                ;
+              }
+              ;
+            }
+            ;
+          }
+          ;
+        }
+        ;
+      }
+      ;
     }
 
     private void checkPassword(String password) {
@@ -85,5 +88,26 @@ public class BruterProcess {
       String username = "administrador";
       TesteSenha.main(new String[] { username, password });
     }
+
+
+    // Check password using external program execution. In this case we are calling the
+    // same TesteSenha class using in the checkPassword. We are printing the messages
+    // because that's how the supervisor knows the process is done.
+    /*
+    private void checkPasswordUsingRuntimeProcess(String password) throws IOException {
+      String username = "administrador";
+      Runtime rt = Runtime.getRuntime();
+      String pathToLib = new File("./src/main/resources/TesteSenha.jar").getPath();
+      String[] commands = { BruterSupervisor.getJavaExecutablePath(), "-jar", pathToLib, username, password };
+      try {
+        Process proc = rt.exec(commands);
+        proc.waitFor();
+        if (proc.exitValue() == 0) {
+          System.out.println(BruterSupervisor.SUCCESS_PREFIX);
+          System.out.println(BruterSupervisor.SUCCESS_PREFIX + password);
+        }
+      } catch (InterruptedException e) {
+      }
+    }*/
   }
 }
