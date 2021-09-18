@@ -76,25 +76,8 @@ public class BruterSupervisor {
     }
   }
 
-  // public static void buildCharsList() {
-  // for (int i = 0; i <= 9; i++) {
-  // CHARS_LIST.add(Integer.toString(i));
-  // }
-  // for(char c : "qwertyuiopasdfghjklzxcvbnm".toCharArray()) {
-  // CHARS_LIST.add(Character.toString(c));
-  // CHARS_LIST.add(Character.toString(c).toUpperCase());
-  // }
-  // }
-
   public static void startBruterProcess(int numThreads, int fromChar, int toChar)
       throws IOException, InterruptedException {
-    // String fullClassName = BruterProcess.class.getName();
-    // String pathToClassFiles = new File("./target/classes").getPath();
-    // String pathSeparator = File.pathSeparator; // ":" on Linux, ";" on Windows
-    // String pathToLib = new File("./src/main/resources/TesteSenha.jar").getPath();
-    // String[] commands = {"java", "-cp", pathToLib + pathSeparator +
-    // pathToClassFiles, fullClassName, "myArg"};
-
     String classpath = System.getProperty("java.class.path");
     String className = BruterProcess.class.getName();
 
@@ -108,11 +91,9 @@ public class BruterSupervisor {
     command.add(Integer.toString(toChar));
 
     ProcessBuilder builder = new ProcessBuilder(command);
-    // Process process = builder.inheritIO().start();
     Process process = builder.start();
     processes.add(process);
     inheritIO(process, process.getInputStream(), System.out);
-    inheritIO(process, process.getErrorStream(), System.err);
   }
 
   private static void inheritIO(Process process, final InputStream src, final PrintStream dest) {
