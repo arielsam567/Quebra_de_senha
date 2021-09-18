@@ -67,7 +67,7 @@ public class BruterSupervisor {
       System.out.println("Starting process: " + i + " => " + fromChar + " to " + toChar);
 
       try {
-        startBruterProcess(numThreads + i, CHARS_LIST.indexOf(fromChar), CHARS_LIST.indexOf(toChar));
+        startBruterProcess(numThreads, CHARS_LIST.indexOf(fromChar), CHARS_LIST.indexOf(toChar));
       } catch (IOException e) {
         e.printStackTrace();
       } catch (InterruptedException e) {
