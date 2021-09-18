@@ -71,7 +71,6 @@ public class BruterProcess {
               for (String char4 : BruterSupervisor.CHARS_LIST) {
                 for (String char5 : BruterSupervisor.CHARS_LIST) {
                   String password = char0 + char1 + char2 + char3 + char4 + char5;
-                  System.out.println(password);
                   checkPassword(password);
                 };
               };
