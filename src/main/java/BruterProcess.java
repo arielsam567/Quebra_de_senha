@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.google.common.collect.Lists;
@@ -63,13 +64,14 @@ public class BruterProcess {
     }
 
     public void run() {
-      for (String char0 : Collections.shuffle(chars)) {
-        for (String char1 : Collections.shuffle(BruterSupervisor.CHARS_LIST)) {
-          for (String char2 : Collections.shuffle(BruterSupervisor.CHARS_LIST)) {
-            for (String char3 : Collections.shuffle(BruterSupervisor.CHARS_LIST)) {
-              for (String char4 : Collections.shuffle(BruterSupervisor.CHARS_LIST)) {
-                for (String char5 : Collections.shuffle(BruterSupervisor.CHARS_LIST)) {
+      for (String char0 : chars) {
+        for (String char1 : BruterSupervisor.CHARS_LIST) {
+          for (String char2 : BruterSupervisor.CHARS_LIST) {
+            for (String char3 : BruterSupervisor.CHARS_LIST) {
+              for (String char4 : BruterSupervisor.CHARS_LIST) {
+                for (String char5 : BruterSupervisor.CHARS_LIST) {
                   String password = char0 + char1 + char2 + char3 + char4 + char5;
+                  System.out.println(password);
                   checkPassword(password);
                 };
               };

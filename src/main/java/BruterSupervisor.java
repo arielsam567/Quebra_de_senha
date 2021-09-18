@@ -69,8 +69,10 @@ public class BruterSupervisor {
       try {
         startBruterProcess(numThreads, CHARS_LIST.indexOf(fromChar), CHARS_LIST.indexOf(toChar));
       } catch (IOException e) {
+        stopAllProcesses(0);
         e.printStackTrace();
       } catch (InterruptedException e) {
+        stopAllProcesses(0);
         e.printStackTrace();
       }
     }
@@ -110,12 +112,8 @@ public class BruterSupervisor {
           }
           if (BruterSupervisor.successOutput == true && BruterSupervisor.password != null) {
             System.out.println("Password found!" + BruterSupervisor.password);
-            for (Process p : BruterSupervisor.processes) {
-              if (p != process) {
-                p.destroy();
-              }
-            }
-            System.exit(0);
+
+            stopAllProcesses(0);
           } else {
             dest.println(text);
           }
@@ -123,6 +121,13 @@ public class BruterSupervisor {
         }
       }
     }).start();
+  }
+
+  private static void stopAllProcesses(int exitStatus) {
+    for (Process p : BruterSupervisor.processes) {
+      p.destroy();
+    }
+    System.exit(exitStatus);
   }
 
   private static String getJavaExecutablePath() {
